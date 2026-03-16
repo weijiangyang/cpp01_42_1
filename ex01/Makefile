@@ -6,7 +6,7 @@ CXXFLAGS    = -Wall -Wextra -Werror -g -std=c++98
 
 # 2. 源文件与目标文件
 # 显式列出源文件，避免使用通配符 * 以防误伤当前目录下的其他测试文件
-SRCS        = main.cpp Zombie.cpp zombieHorde.cpp newZombie.cpp
+SRCS        = main.cpp Zombie.cpp zombieHorde.cpp 
 # 将 .cpp 后缀替换为 .o
 OBJS        = $(SRCS:.cpp=.o)
 
