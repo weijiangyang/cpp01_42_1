@@ -30,19 +30,36 @@ void Harl::error(void) const
 	std::cout << "ERROR: This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
+
 void Harl::complain(std::string level) const
 {
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*funcs[4])(void) const = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	int i = 0;
 	while (i < 4)
 	{
 		if (level == levels[i])
-		{
-			(this->*funcs[i])();
-			return ;
-		}
-		i++;		
+			break;
+		i++;
 	}
-	std::cout << "Unknown level!" << std::endl;
+	switch (i)
+	{
+		case 0:
+			std::cout << "[ DEBUG ]" << std::endl;
+			this->debug();
+		case 1:
+			std::cout << "[ INFO ]" << std::endl;
+			this->info();
+		case 2:
+			std::cout << "[ WARNING ]" << std::endl;
+			this->warning();
+		case 3:
+			std::cout << "[ ERROR ]" << std::endl;
+			this->error();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }
+
+
+
