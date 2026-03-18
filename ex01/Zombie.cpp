@@ -32,7 +32,3 @@ void Zombie :: announce() const
     std::cout << this->name <<  " : BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void Zombie :: randomChump()
-{
-    this->announce();
-}
