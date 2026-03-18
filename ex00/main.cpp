@@ -1,65 +1,58 @@
-#include <iostream>
-#include <string>
-#include <sstream> // 必须包含此头文件以使用 stringstream
 #include "Zombie.hpp"
+#include <sstream>
 
 int main()
 {
     int i = 0;
-    Zombie *zombies_new [10];
-
     
-    // 循环 10 次，生成 10 个不同的名字并传入 randomChump
+    // --- 第一部分：演示栈内存（Stack）的自动管理 ---
+    // 这里循环调用 randomChump，该函数通常在内部创建一个局部对象。
+    // 当 randomChump 函数执行结束时，局部 Zombie 对象会自动析构。
     while (i < 10)
     {
-        // 声明一个字符串用于存储最终的名字（如 "Zombie0"）
         std::string name;
-
-        // 使用 stringstream 处理流式输入，方便将整数 i 转换为字符串
         std::stringstream ss;
-        
-        // 将整数 i 放入流中
-        ss << i; 
-        
-        // 拼接字符串："Zombie" + 转换后的数字字符串
-        // ss.str() 会返回 stringstream 内部存储的 string 对象
+        ss << i;
         name = "Zombie" + ss.str();
         
-        /*
-         * 调用 randomChump 函数：
-         * 1. 它是项目要求的一部分，通常在栈上创建 Zombie 对象。
-         * 2. 注意：由于 name 和 ss 是在 while 循环内部定义的，
-         * 它们在每次循环结束（遇到 '}'）时都会被销毁并重新构造。
-         */
+        // 调用 randomChump：创建即销毁（随函数作用域结束）
         randomChump(name);
 
-        i++; // 计数器递增
+        i++;
     }
+
+    // --- 第二部分：演示堆内存（Heap）的手动管理 ---
     i = 0;
+    // 分配一个指针数组，用于存放 10 个指向 Zombie 对象的指针
+    Zombie **zombieOnHeap = new Zombie*[10];
+
     while (i < 10)
     {
-        // 声明一个字符串用于存储最终的名字（如 "Zombie0"）
         std::string name;
-
-        // 使用 stringstream 处理流式输入，方便将整数 i 转换为字符串
         std::stringstream ss;
-        
-        // 将整数 i 放入流中
-        ss << i; 
-        
-        // 拼接字符串："Zombie" + 转换后的数字字符串
-        // ss.str() 会返回 stringstream 内部存储的 string 对象
+        ss << i;
         name = "Zombie" + ss.str();
         
-        zombies_new[i]= newZombie(name);
-        zombies_new[i]->announce();
+        // 使用 newZombie 在堆上分配内存
+        // 这里的对象在手动执行 delete 之前会一直存在
+        zombieOnHeap[i] = newZombie(name);
+        
+        // 调用成员函数
+        zombieOnHeap[i]->announce();
         i++;
     }
+
+    // --- 第三部分：清理堆内存 ---
     i = 0;
     while (i < 10)
     {
-        delete zombies_new[i];
+        // 逐个释放堆上的 Zombie 对象，触发它们的析构函数
+        delete zombieOnHeap[i];
         i++;
     }
-    return (0); // 程序正常结束
+    
+    // 释放最开始分配的指针数组内存
+    delete [] zombieOnHeap;
+
+    return (0);
 }
