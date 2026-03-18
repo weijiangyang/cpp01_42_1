@@ -6,6 +6,8 @@
 int main()
 {
     int i = 0;
+    Zombie *zombies_new [10];
+
     
     // 循环 10 次，生成 10 个不同的名字并传入 randomChump
     while (i < 10)
@@ -33,6 +35,31 @@ int main()
 
         i++; // 计数器递增
     }
-    
+    i = 0;
+    while (i < 10)
+    {
+        // 声明一个字符串用于存储最终的名字（如 "Zombie0"）
+        std::string name;
+
+        // 使用 stringstream 处理流式输入，方便将整数 i 转换为字符串
+        std::stringstream ss;
+        
+        // 将整数 i 放入流中
+        ss << i; 
+        
+        // 拼接字符串："Zombie" + 转换后的数字字符串
+        // ss.str() 会返回 stringstream 内部存储的 string 对象
+        name = "Zombie" + ss.str();
+        
+        zombies_new[i]= newZombie(name);
+        zombies_new[i]->announce();
+        i++;
+    }
+    i = 0;
+    while (i < 10)
+    {
+        delete zombies_new[i];
+        i++;
+    }
     return (0); // 程序正常结束
 }
