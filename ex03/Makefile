@@ -6,7 +6,7 @@
 #    By: weiyang <weiyang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/19 11:05:13 by weiyang           #+#    #+#              #
-#    Updated: 2026/03/19 11:05:14 by weiyang          ###   ########.fr        #
+#    Updated: 2026/03/19 11:53:19 by weiyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME        = attack
 
 # 1. 编译器与选项
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -g -std=c++98
+CXXFLAGS    = -Wall -Wextra -Werror  -std=c++98
 
 # 2. 源文件与目标文件
 # 显式列出源文件，避免使用通配符 * 以防误伤当前目录下的其他测试文件
