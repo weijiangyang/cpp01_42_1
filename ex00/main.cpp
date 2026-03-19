@@ -6,7 +6,7 @@
 /*   By: weiyang <weiyang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 10:23:19 by weiyang           #+#    #+#             */
-/*   Updated: 2026/03/19 10:23:28 by weiyang          ###   ########.fr       */
+/*   Updated: 2026/03/19 12:13:08 by weiyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 int main()
 {
 	int i = 0;
-    Zombie *zombieOnHeap = new Zombie[10];
-	while (i < 10)
+ 	while (i < 10)
 	{
 		std::string name;
 		std::stringstream ss;
@@ -26,17 +25,8 @@ int main()
 		randomChump(name);
 		i++;
 	}
-    i = 0;
-    while (i < 10)
-    {
-        std::string name;
-		std::stringstream ss;
-		ss << i;
-		name = "Zombie" + ss.str();
-        zombieOnHeap[i].setName(name);
-        zombieOnHeap[i].announce();
-		i++;
-    }
-    delete [] zombieOnHeap;
-	return (0);
+  	Zombie *zombieOnHeap = newZombie("zombieOnHeap");
+	zombieOnHeap->announce();
+	delete zombieOnHeap;
+ 	return (0);
 }
