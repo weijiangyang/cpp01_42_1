@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: weiyang <weiyang@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/19 11:57:23 by weiyang           #+#    #+#             */
+/*   Updated: 2026/03/19 11:57:24 by weiyang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 
 class Harl
 {
 	private:
-		void debug(void) const;
-		void info(void) const;
-		void warning(void) const;
-		void error(void) const;
+		void _debug(void) const;
+		void _info(void) const;
+		void _warning(void) const;
+		void _error(void) const;
 	
 	public:
-		Harl();
-		~Harl();
+		Harl(void);
+		~Harl(void);
 		void complain(std::string level) const;
 };
