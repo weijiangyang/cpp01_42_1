@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: weiyang <weiyang@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/19 10:59:33 by weiyang           #+#    #+#             */
+/*   Updated: 2026/03/19 10:59:34 by weiyang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
@@ -9,7 +21,7 @@ HumanB::HumanB(std::string name) :_weapon(NULL), _name(name)
 
 HumanB::~HumanB()
 {
-    std::cout << this->_weapon->getType() << " is destroyed. " << std::endl;
+    std::cout << this->_name << " is destroyed. " << std::endl;
 }
 
 void HumanB::setWeapon(Weapon* weapon)
